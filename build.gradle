@@ -1,0 +1,28 @@
+apply plugin: 'java'
+apply plugin: 'groovy'
+apply plugin: 'application'
+
+repositories {
+	jcenter()
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+	compile 'org.codehaus.groovy:groovy-all:2.4.10'
+	compile 'com.xlson.groovycsv:groovycsv:1.1'
+	compile 'com.google.code.gson:gson:2.8.2'
+	compile 'org.freemarker:freemarker:2.3.23'
+	compile 'org.slf4j:slf4j-simple:1.7.25'
+
+	compile files("${System.getenv("JAVA_HOME")}/lib/tools.jar")
+
+	testCompile 'junit:junit:4.12'
+}
+
+mainClassName = "org.stagemonitor.loadtest.Main"
+
+run {
+	systemProperties System.getProperties()
+}
